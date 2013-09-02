@@ -1,0 +1,20 @@
+<html>
+    <body>
+    <!-- [ images list ] -->
+        <div style="float:right; width:100%; border-left: solid 1px black">
+            <div id="listdiv" align="center">
+                <h5>Images to be analyzed:</h5>
+                <select multiple size=10 id=imglist style="width:80%"></select>
+                <br />
+                <input type="button" id="evalbutton" value="Analyze" onclick="test()" />
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript">
+function test() {
+    var msg = magicbox.greeting();
+    alert(msg);
+}
+</script>
