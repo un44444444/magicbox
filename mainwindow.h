@@ -18,6 +18,7 @@ private:
 
 private slots:
     void addJSObject();
+    void linkClickedSlot( QUrl url );
 };
 
 #endif // MAINWINDOW_H

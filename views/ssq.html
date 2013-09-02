@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>index - magicbox</title>
+<script type="text/javascript">
+function test() {
+    var msg = magicbox.greeting();
+    alert(msg);
+}
+</script>
+</head>
+<body>
+<div id="navigation" data-role="page">
+    <div style="float:right; width:100%; border-left: solid 1px black">
+        <div id="listdiv" align="center">
+            <h5>Images to be analyzed:</h5>
+            <select multiple size=10 id=imglist style="width:80%"></select>
+            <br />
+            <input type="button" id="evalbutton" value="Analyze" onclick="test()" />
+        </div>
+    </div>
+</div><!-- /page -->
+</body>
+</html>
