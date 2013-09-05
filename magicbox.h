@@ -11,7 +11,7 @@ public:
     ~CMagicBox();
 
 public slots:
-    QString greeting();
+    QString generate(const QString& type, const QString& params);
 };
 
 #endif // CMAGICBOX_H

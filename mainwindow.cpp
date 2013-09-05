@@ -36,10 +36,12 @@ void MainWindow::addJSObject()
 }
 
 //This slot handles all clicks
-void MainWindow::linkClickedSlot( QUrl url )
+void MainWindow::linkClickedSlot(const QUrl& url)
 {
-    if (url.isValid())//isHtml does not exist actually you need to write something like it by yourself
-         this->load (url);
-    else//non html (pdf) pages will be opened with default application
+    if (url.isValid()) {//isHtml does not exist actually you need to write something like it by yourself
+        this->load (url);
+    }
+    else {//non html (pdf) pages will be opened with default application
         QDesktopServices::openUrl( url );
+    }
 }

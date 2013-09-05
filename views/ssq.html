@@ -3,23 +3,34 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
   <title>index - magicbox</title>
-<script type="text/javascript">
-function test() {
-    var msg = magicbox.greeting();
-    alert(msg);
-}
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+    // convert
+    $("#ssq_generate").click(function() {
+        var result = magicbox.generate("ssq", "20130906");
+        var old_val = $("#ssq_result").val();
+        if (old_val) {
+            $("#ssq_result").val(old_val + "\n" + result);
+        }
+        else {
+            $("#ssq_result").val(result);
+        }
+        $("#ssq_result").trigger('keyup');
+    });
+});
 </script>
 </head>
 <body>
-<div id="navigation" data-role="page">
-    <div style="float:right; width:100%; border-left: solid 1px black">
-        <div id="listdiv" align="center">
-            <h5>Images to be analyzed:</h5>
-            <select multiple size=10 id=imglist style="width:80%"></select>
-            <br />
-            <input type="button" id="evalbutton" value="Analyze" onclick="test()" />
-        </div>
-    </div>
+<div id="ssq" data-role="page">
+  <div data-role="content">
+    <button id="ssq_generate" data-role="button" data-inline="true">赐我号码！</button>
+    <br />
+    <textarea id="ssq_result" class="text"></textarea>
+  </div><!-- /content -->
+  <div data-role="footer">
+    <a href="index.html">首页</a>
+  </div><!-- /footer -->
 </div><!-- /page -->
 </body>
 </html>
