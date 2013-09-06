@@ -4,9 +4,10 @@
 #
 #-------------------------------------------------
 
-QT       += webkitwidgets
+QT       +=
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+equals(QT_MAJOR_VERSION, 4): QT += webkit
+greaterThan(QT_MAJOR_VERSION, 4): QT += webkitwidgets widgets
 
 TARGET = magicbox
 TEMPLATE = app

@@ -1,7 +1,12 @@
 #ifndef CMAGICBOX_H
 #define CMAGICBOX_H
 
-#include <QtWidgets>
+#if QT_VERSION >= 0x050000
+    #include <QtWidgets>
+#else
+    #include <QtGui>
+#endif
+
 
 class CMagicBox : public QObject
 {
