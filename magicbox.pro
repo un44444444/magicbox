@@ -16,11 +16,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     magicbox.cpp \
-    magics/ssq.cpp
+    magics/ssq.cpp \
+    magics/magics_common.cpp
 
 HEADERS  += mainwindow.h \
     magicbox.h \
-    magics/ssq.h
+    magics/ssq.h \
+    magics/magics_common.h
 
 RESOURCES += \
     views/views.qrc

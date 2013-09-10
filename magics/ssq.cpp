@@ -21,23 +21,25 @@ static int get_radom_index_between_1_36()
     return (rand() % (end-start+1))+ start;
 }
 
-string magic_ssq(const string& params)
+magicobject_t magic_ssq(const std::string& params)
 {
-    int blue[6+1];
+    magicobject_t result;
+    magicnum_t* blue = result.get_array();
+    size_t blue_arraysize = result.get_arraysize();
     int red = 0;
-    for (size_t i=0; i<sizeof(blue)/sizeof(blue[0]); ++i)
-    {
-        blue[i] = 0;
-    }
     //
     blue[0] = get_radom_index_between_1_36();
-    for (size_t j=1; j<sizeof(blue)/sizeof(blue[0])-1; ++j)
+    for (size_t j=1; j<blue_arraysize; ++j)
     {
         int index = get_radom_index_between_1_36();
         size_t k=0;
-        for (; blue[k]!=0; ++k)
+        for (; k<blue_arraysize; ++k)
         {
-            if (index >= blue[k]) ++index;
+            if (blue[k]==0) {
+                blue[k]=index;
+                break;
+            }
+            else if (index >= blue[k]) ++index;
             else {
                 //
                 for (size_t tmp=j;tmp>k;--tmp) {
@@ -48,13 +50,11 @@ string magic_ssq(const string& params)
                 break;
             }
         }
-        if (blue[k]==0) blue[k]=index;
+        if (k==blue_arraysize-1) blue[k]=index;
     }
     //
     red = get_radom_index_between_1_36();
+    result.specialnum = red;
     //
-    char result[21];
-    snprintf(result, sizeof(result), "%d,%d,%d,%d,%d,%d+%d",
-             blue[0],blue[1],blue[2],blue[3],blue[4],blue[5],red);
     return result;
 }

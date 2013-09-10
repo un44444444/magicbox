@@ -2,8 +2,8 @@
 #define MAGICS_SSQ_H
 
 #include <string>
-using std::string;
+#include "magics_common.h"
 
-extern string magic_ssq(const string& params);
+extern magicobject_t magic_ssq(const std::string& params);
 
 #endif // MAGICS_SSQ_H

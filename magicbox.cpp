@@ -1,7 +1,7 @@
 #include "magicbox.h"
 
 #include "magics/ssq.h"
-typedef string (*MAGIC_FUNC)(const string& params);
+typedef magicobject_t (*MAGIC_FUNC)(const std::string& params);
 
 CMagicBox::CMagicBox(QObject* parent)
     : QObject(parent)
@@ -17,6 +17,6 @@ QString CMagicBox::generate(const QString& type, const QString& params)
     if (type == "ssq") {
         func = magic_ssq;
     }
-    const string& result = (*func)(params.toUtf8().constData());
-    return QString::fromStdString(result);
+    const magicobject_t& result = (*func)(params.toUtf8().constData());
+    return QString::fromStdString(result.to_string());
 }
