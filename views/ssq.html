@@ -8,7 +8,8 @@
 $(document).ready(function(){
     // convert
     $("#ssq_generate").click(function() {
-        var result = magicbox.generate("ssq", "20130906");
+        var type = {"c":"ssq","flag":1};
+        var result = magicbox.generate(type, "20130906");
         var old_val = $("#ssq_result").val();
         if (old_val) {
             $("#ssq_result").val(old_val + "\n" + result);

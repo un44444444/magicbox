@@ -5,8 +5,7 @@
 #include <sys/time.h>//gettimeofday
 #include <unistd.h>//usleep
 
-#include <iostream>
-using namespace std;
+#include "utils/log.h"
 
 static int get_radom_index_between_1_36()
 {
@@ -17,7 +16,7 @@ static int get_radom_index_between_1_36()
     struct timeval tv;
     gettimeofday(&tv, NULL);
     srand(tv.tv_usec);
-    cout<<tv.tv_usec<<endl;
+    MAGICBOX_LOG_DEBUG(tv.tv_usec);
     return (rand() % (end-start+1))+ start;
 }
 

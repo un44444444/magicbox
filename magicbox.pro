@@ -12,8 +12,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += webkitwidgets widgets
 TARGET = magicbox
 TEMPLATE = app
 
+#INCLUDEPATH += "$$_PRO_FILE_PWD_/third-party/jsoncpp/include"
+LIBS +=
 
-SOURCES += main.cpp\
+
+SOURCES += main.cpp \
         mainwindow.cpp \
     magicbox.cpp \
     magics/ssq.cpp \
@@ -22,7 +25,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     magicbox.h \
     magics/ssq.h \
-    magics/magics_common.h
+    magics/magics_common.h \
+    utils/log.h
 
 RESOURCES += \
     views/views.qrc
