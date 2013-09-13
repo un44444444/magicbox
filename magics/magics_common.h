@@ -1,5 +1,5 @@
-#ifndef MAGICS_COMMON_H
-#define MAGICS_COMMON_H
+#ifndef MAGICBOX_MAGICS_COMMON_H
+#define MAGICBOX_MAGICS_COMMON_H
 
 #define SIZEOF_ARRAY(array) sizeof(array)/sizeof(array[0])
 
@@ -20,4 +20,4 @@ typedef struct magicobject{
 
 extern int caculate_ac(const magicobject_t& mo);
 
-#endif // MAGICS_COMMON_H
+#endif // MAGICBOX_MAGICS_COMMON_H

@@ -1,24 +1,7 @@
 #include "ssq.h"
-
-#include <stdlib.h>
-#include <time.h>
-#include <sys/time.h>//gettimeofday
-#include <unistd.h>//usleep
+#include "../randoms/random_rand.h"
 
 #include "utils/log.h"
-
-static int get_radom_index_between_1_36()
-{
-    int start = 1;
-    int end = 36;
-    //srand((unsigned int)(time(NULL)));
-    usleep(10);  //毫秒级休眠
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    srand(tv.tv_usec);
-    MAGICBOX_LOG_DEBUG(tv.tv_usec);
-    return (rand() % (end-start+1))+ start;
-}
 
 magicobject_t magic_ssq(const std::string& params)
 {
@@ -26,11 +9,12 @@ magicobject_t magic_ssq(const std::string& params)
     magicnum_t* blue = result.get_array();
     size_t blue_arraysize = result.get_arraysize();
     int red = 0;
+    CRandomRand random;
     //
-    blue[0] = get_radom_index_between_1_36();
+    blue[0] = random.RandomRange(1, 36);
     for (size_t j=1; j<blue_arraysize; ++j)
     {
-        int index = get_radom_index_between_1_36();
+        int index = random.RandomRange(1, 36);
         size_t k=0;
         for (; k<blue_arraysize; ++k)
         {
@@ -52,7 +36,7 @@ magicobject_t magic_ssq(const std::string& params)
         if (k==blue_arraysize-1) blue[k]=index;
     }
     //
-    red = get_radom_index_between_1_36();
+    red = random.RandomRange(1, 36);
     result.specialnum = red;
     //
     return result;
