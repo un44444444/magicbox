@@ -8,10 +8,11 @@ class CRandomRand
 public:
     CRandomRand();
     CRandomRand(const std::string& params);
-    //CRandomRand(const CRandomRand& rhs);
     ~CRandomRand();
     //
     int RandomRange(int low, int high);
+private:
+    CRandomRand(const CRandomRand& rhs);
 };
 
 #endif // MAGICBOX_RANDOM_RAND_H

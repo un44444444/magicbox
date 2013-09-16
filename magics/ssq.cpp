@@ -9,7 +9,7 @@ magicobject_t magic_ssq(const std::string& params)
     magicnum_t* blue = result.get_array();
     size_t blue_arraysize = result.get_arraysize();
     int red = 0;
-    CRandomRand random;
+    CRandomRand random(params);
     //
     blue[0] = random.RandomRange(1, 36);
     for (size_t j=1; j<blue_arraysize; ++j)
