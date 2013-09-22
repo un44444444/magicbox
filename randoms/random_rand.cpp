@@ -1,26 +1,17 @@
 #include "random_rand.h"
 
-#include <stdlib.h>
-#include <sys/time.h>//gettimeofday
+#include <stdlib.h>//srand() rand()
+#include "seed.h"
 
 #include "utils/log.h"
 
 CRandomRand::CRandomRand()
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    MAGICBOX_LOG_DEBUG(tv.tv_sec);
-    MAGICBOX_LOG_DEBUG(tv.tv_usec);
-    srand(tv.tv_sec+tv.tv_usec*1000);
+    srand(get_32bit_seed());
 }
 CRandomRand::CRandomRand(const std::string& params)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    MAGICBOX_LOG_DEBUG(tv.tv_sec);
-    MAGICBOX_LOG_DEBUG(tv.tv_usec);
-    MAGICBOX_LOG_DEBUG(params);
-    srand(tv.tv_sec+tv.tv_usec*1000);
+    srand(get_32bit_seed());
 }
 CRandomRand::~CRandomRand()
 {

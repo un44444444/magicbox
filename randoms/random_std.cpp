@@ -1,7 +1,7 @@
 #include "random_std.h"
 
 #include <random>//require c++11
-#include <sys/time.h>//gettimeofday
+#include "seed.h"
 
 #include "utils/log.h"
 
@@ -28,9 +28,7 @@ CRandomGenerator* CRandomGenerator::Instance(int rstart, int rend)
 }
 CRandomGenerator::CRandomGenerator(int rstart, int rend)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    m_pGenerator = new std::default_random_engine(tv.tv_sec+tv.tv_usec*1000);
+    m_pGenerator = new std::default_random_engine(get_32bit_seed());
     m_pDistribution = new std::uniform_int_distribution<int>(rstart, rend);
 }
 CRandomGenerator::~CRandomGenerator()

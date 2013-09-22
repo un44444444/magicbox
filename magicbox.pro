@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     magics/magics_common.cpp \
     randoms/random_mt.cpp \
     randoms/random_std.cpp \
-    randoms/random_rand.cpp
+    randoms/random_rand.cpp \
+    randoms/seed.cpp
 
 HEADERS  += mainwindow.h \
     magicbox.h \
@@ -33,7 +34,8 @@ HEADERS  += mainwindow.h \
     utils/log.h \
     randoms/random_mt.h \
     randoms/random_std.h \
-    randoms/random_rand.h
+    randoms/random_rand.h \
+    randoms/seed.h
 
 RESOURCES += \
     views/views.qrc
