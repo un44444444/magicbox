@@ -1,4 +1,5 @@
 #include "random_std.h"
+//see http://www.cplusplus.com/reference/random/
 
 #include <random>//require c++11
 #include "seed.h"

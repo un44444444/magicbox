@@ -1,4 +1,5 @@
 #include "random_mt.h"
+//see http://www.codeproject.com/Articles/3068/A-Mersenne-Twister-Class
 
 CRandomMT::CRandomMT() : left(-1)
 {
