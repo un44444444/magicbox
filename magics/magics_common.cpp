@@ -5,6 +5,7 @@
 
 
 #define MAGICNUM_MAX_VALUE 36
+#define MAGICNUM_MIN_VALUE 1
 
 magicobject::magicobject()
 {
@@ -25,8 +26,8 @@ std::string magicobject::to_string(int ac) const
 int caculate_ac(const magicobject_t& mo)
 {
     const magicnum_t* blue = mo.get_array();
-    size_t blue_arraysize = mo.get_arraysize();
-    magicnum_t delta_array[MAGICNUM_MAX_VALUE-1];
+    const size_t blue_arraysize = mo.get_arraysize();
+    magicnum_t delta_array[MAGICNUM_MAX_VALUE-MAGICNUM_MIN_VALUE];
     memset(delta_array, 0, sizeof(delta_array));
     //
     for (size_t i=0; i<blue_arraysize; ++i)

@@ -3,6 +3,24 @@
 
 #include "utils/log.h"
 
+#define SSQ_MAX_BALL 36
+#define SSQ_MIN_BALL 1
+
+static inline bool is_in_array(const magicnum_t* blue, size_t bule_filled, magicnum_t value)
+{
+    bool result = false;
+    size_t k=0;
+    for (; k<bule_filled; ++k)
+    {
+        if (blue[k] == value) {
+            result = true;
+            break;
+        }
+    }
+    //
+    return result;
+}
+
 magicobject_t magic_ssq(const std::string& params)
 {
     magicobject_t result;
@@ -11,32 +29,18 @@ magicobject_t magic_ssq(const std::string& params)
     int red = 0;
     CRandomRand random(params);
     //
-    blue[0] = random.RandomRange(1, 36);
+    blue[0] = random.RandomRange(SSQ_MIN_BALL, SSQ_MAX_BALL);
     for (size_t j=1; j<blue_arraysize; ++j)
     {
-        int index = random.RandomRange(1, 36);
-        size_t k=0;
-        for (; k<blue_arraysize; ++k)
+        int index = random.RandomRange(SSQ_MIN_BALL, SSQ_MAX_BALL);
+        while (is_in_array(blue,j,index))
         {
-            if (blue[k]==0) {
-                blue[k]=index;
-                break;
-            }
-            else if (index >= blue[k]) ++index;
-            else {
-                //
-                for (size_t tmp=j;tmp>k;--tmp) {
-                    blue[tmp] = blue[tmp-1];
-                }
-                //
-                blue[k]=index;
-                break;
-            }
+            index = random.RandomRange(SSQ_MIN_BALL, SSQ_MAX_BALL);
         }
-        if (k==blue_arraysize-1) blue[k]=index;
+        blue[j] = index;
     }
     //
-    red = random.RandomRange(1, 36);
+    red = random.RandomRange(SSQ_MIN_BALL, SSQ_MAX_BALL);
     result.specialnum = red;
     //
     return result;
