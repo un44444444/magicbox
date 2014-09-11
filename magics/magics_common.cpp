@@ -9,32 +9,33 @@
 
 magicobject::magicobject()
 {
-    for (size_t i=0; i<SIZEOF_ARRAY(numarray); ++i)
+    for (size_t i=0; i<SIZEOF_ARRAY(_numarray); ++i)
     {
-        numarray[i] = 0;
+        _numarray[i] = 0;
     }
 }
 
-std::string magicobject::to_string(int ac) const
+std::string magicobject::to_string() const
 {
-    char result[24];
-    snprintf(result, sizeof(result), "%d,%d,%d,%d,%d,%d+%d|%d",
-             numarray[0],numarray[1],numarray[2],numarray[3],numarray[4],numarray[5],specialnum,ac);
+    char result[128];
+    snprintf(result, sizeof(result), "{\"r\":[%d,%d,%d,%d,%d,%d],\"b\":%d,\"ac\":%d,\"score\":%d}",
+             _numarray[0],_numarray[1],_numarray[2],_numarray[3],_numarray[4],_numarray[5],
+             _specialnum,_ac,_score);
     return result;
 }
 
 int caculate_ac(const magicobject_t& mo)
 {
-    const magicnum_t* blue = mo.get_array();
-    const size_t blue_arraysize = mo.get_arraysize();
+    const magicnum_t* array = mo.get_array();
+    const size_t arraysize = mo.get_arraysize();
     magicnum_t delta_array[MAGICNUM_MAX_VALUE-MAGICNUM_MIN_VALUE];
     memset(delta_array, 0, sizeof(delta_array));
     //
-    for (size_t i=0; i<blue_arraysize; ++i)
+    for (size_t i=0; i<arraysize; ++i)
     {
-        for (size_t j=blue_arraysize-1; i<j; --j)
+        for (size_t j=arraysize-1; i<j; --j)
         {
-            magicnum_t delta = blue[j]>=blue[i] ? blue[j]-blue[i] : blue[i]-blue[j];
+            magicnum_t delta = array[j]>=array[i] ? array[j]-array[i] : array[i]-array[j];
             delta_array[delta] = 1;
         }
     }
@@ -47,5 +48,11 @@ int caculate_ac(const magicobject_t& mo)
     }
     MAGICBOX_LOG_DEBUG(delta_count);
     //
-    return delta_count-(blue_arraysize-1);
+    return delta_count-(arraysize-1);
+}
+
+int caculate_score(const magicobject_t& mo)
+{
+    //
+    return 100;
 }

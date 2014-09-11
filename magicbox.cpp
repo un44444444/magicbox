@@ -25,7 +25,8 @@ QString CMagicBox::generate(const QVariantMap& type, const QString& params)
     if (type_class == "ssq") {
         func = magic_ssq;
     }
-    const magicobject_t& result = (*func)(params.toUtf8().constData());
-    int ac = caculate_ac(result);
-    return QString::fromStdString(result.to_string(ac));
+    magicobject_t result = (*func)(params.toUtf8().constData());
+    result.set_ac(caculate_ac(result));
+    result.set_score(caculate_score(result));
+    return QString::fromStdString(result.to_string());
 }

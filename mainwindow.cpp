@@ -2,6 +2,7 @@
 #include "magicbox.h"
 
 #include <QWebFrame>
+#include <QWebInspector>
 
 MainWindow::MainWindow(QWidget *parent)
     : QWebView(parent)
@@ -13,9 +14,15 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
                      this, SLOT(addJSObject()));
 
+    // QWebInspector
+    QWebInspector *inspector = new QWebInspector;
+    inspector->setPage(page());
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
+    // context menu
+    this->setContextMenuPolicy(Qt::NoContextMenu); //No context menu is allowed if you don't need it
+
     // Try to handle cicks by self
     page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);//Handle link clicks by yourself
-    this->setContextMenuPolicy(Qt::NoContextMenu); //No context menu is allowed if you don't need it
     QObject::connect(page(), SIGNAL( linkClicked( QUrl ) ),
                   this, SLOT( linkClickedSlot( QUrl ) ) );
 

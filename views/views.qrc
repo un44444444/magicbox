@@ -1,9 +1,18 @@
 <RCC>
     <qresource prefix="/">
         <file>index.html</file>
-        <file>ssq.html</file>
-        <file>js/jquery-1.10.2.min.js</file>
-        <file>css/main.css</file>
-        <file>js/navbar.js</file>
+        <file>partials/main.html</file>
+        <file>partials/ssq.html</file>
+        <file>js/app.js</file>
+        <file>js/controllers.js</file>
+        <file>js/filters.js</file>
+        <file>js/services.js</file>
+        <file>css/app.css</file>
+        <file>bower_components/jquery/jquery.js</file>
+        <file>bower_components/bootstrap/bootstrap.css</file>
+        <file>bower_components/angular/angular.js</file>
+        <file>bower_components/angular/angular-resource.js</file>
+        <file>bower_components/angular/angular-route.js</file>
+        <file>img/ball.gif</file>
     </qresource>
 </RCC>

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <!--Body content-->
+      {{title}}
+
+      <button id="ssq_generate" data-role="button" data-inline="true" ng-click="createSsq()">赐我号码！</button>
+      <br />
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="-obj.score">评分由高到低</option>
+        <option value="obj.score">评分由低到高</option>
+        <option value="">时间顺序</option>
+      </select>
+      <br />
+      <!-- LOOP OVER THE SSQS IN $scope.ssqs -->
+      <div class="checkbox" ng-repeat="ssq in ssqs | orderBy:orderProp:reverse">
+       <p class="line_big">
+        <label ng-repeat="red in ssq.obj.r">
+          <span class="redball_big">{{ (red>=10) ? red : '0'+red }}</span>
+        </label>
+        <label>
+          <span class="blueball_big">{{ (ssq.obj.b>=10) ? ssq.obj.b : '0'+ssq.obj.b }}</span>
+        </label>
+        <label>
+          <span style="color:green">{{ ssq.obj.ac }}</span>
+          <span style="color:yellow">{{ ssq.obj.score }}</span>
+        </label>
+       </p>
+      </div>
+
+    </div>
+  </div>
+</div>
