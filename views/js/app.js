@@ -25,9 +25,9 @@ magicboxApp.config(['$routeProvider',
         templateUrl: 'partials/about.html',
         controller: 'AboutCtrl'
       }).
-      when('/ssq/:ssqId', {
-        templateUrl: 'partials/ssq-detail.html',
-        controller: 'SsqDetailCtrl'
+      when('/about/:areaId', {
+        templateUrl: 'partials/about-detail.html',
+        controller: 'AboutDetailCtrl'
       }).
       otherwise({
         redirectTo: '/index'

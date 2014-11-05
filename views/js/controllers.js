@@ -33,19 +33,16 @@ magicboxControllers.controller('SsqCtrl', ['$scope',
 
 magicboxControllers.controller('AboutCtrl', ['$scope', 'AboutService',
   function($scope, AboutService) {
-    $scope.title = 'main';
-    $scope.data = AboutService.getarea();
+    $scope.title = 'about';
+    $scope.areas = AboutService.getallareas();
   }
 ]);
 
-magicboxControllers.controller('SsqDetailCtrl', ['$scope', '$routeParams', 'Ssq',
-  function($scope, $routeParams, Ssq) {
-    $scope.ssq = Ssq.get({ssqId: $routeParams.ssqId}, function(phone) {
-      $scope.mainImageUrl = phone.images[0];
+magicboxControllers.controller('AboutDetailCtrl', ['$scope', '$routeParams', 'AboutService',
+  function($scope, $routeParams, AboutService) {
+    $scope.title = 'about detail';
+    $scope.area = AboutService.getarea({areaId: $routeParams.areaId+".json"}, function(area) {
+      $scope.areaid = area.id;
     });
-
-    $scope.setImage = function(imageUrl) {
-      $scope.mainImageUrl = imageUrl;
-    }
   }
 ]);
