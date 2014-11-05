@@ -8,7 +8,8 @@ magicboxControllers.controller('MainCtrl', ['$scope',
   function($scope) {
     $scope.phones = [];
     $scope.title = 'main';
-  }]);
+  }
+]);
 
 magicboxControllers.controller('SsqCtrl', ['$scope',
   function($scope) {
@@ -27,15 +28,24 @@ magicboxControllers.controller('SsqCtrl', ['$scope',
       $scope.ssqs.push({"_id":$scope.seq,"text":result,"obj":JSON.parse(result)});
       $scope.seq++;
     };
-  }]);
+  }
+]);
 
-magicboxControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-  function($scope, $routeParams, Phone) {
-    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+magicboxControllers.controller('AboutCtrl', ['$scope', 'AboutService',
+  function($scope, AboutService) {
+    $scope.title = 'main';
+    $scope.data = AboutService.getarea();
+  }
+]);
+
+magicboxControllers.controller('SsqDetailCtrl', ['$scope', '$routeParams', 'Ssq',
+  function($scope, $routeParams, Ssq) {
+    $scope.ssq = Ssq.get({ssqId: $routeParams.ssqId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
     });
 
     $scope.setImage = function(imageUrl) {
       $scope.mainImageUrl = imageUrl;
     }
-  }]);
+  }
+]);

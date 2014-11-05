@@ -4,9 +4,11 @@
 
 var magicboxServices = angular.module('magicboxServices', ['ngResource']);
 
-magicboxServices.factory('Phone', ['$resource',
+magicboxServices.factory('AboutService', ['$resource',
   function($resource){
-    return $resource('phones/:phoneId.json', {}, {
-      query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
+    var baseurl = 'http://127.0.0.1:8088/';
+    return $resource(baseurl+'recvSmgpSubmitRpt/:areaId', {}, {
+      getarea: {method:'GET', params:{areaId:''}, isArray:true}
     });
-  }]);
+  }
+]);
